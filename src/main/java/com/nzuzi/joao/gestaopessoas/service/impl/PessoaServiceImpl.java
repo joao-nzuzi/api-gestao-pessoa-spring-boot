@@ -8,8 +8,6 @@ import com.nzuzi.joao.gestaopessoas.repository.PessoaRepo;
 import com.nzuzi.joao.gestaopessoas.service.IPessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,18 +21,8 @@ public class PessoaServiceImpl implements IPessoaService {
 
     @Override
     public MessageResponseDTO cadastrar(PessoaDTO pessoaDTO) {
-        Pessoa pessoaQueSeraSalva = Pessoa.builder()
-                .primeiroNome(pessoaDTO.getPrimeiroNome())
-                .ultimoNome(pessoaDTO.getUltimoNome())
-                .dataNascimento(pessoaDTO.getDataNascimento())
-                .telefones(pessoaDTO.getTelefones())
-                .numeroBilhete(pessoaDTO.getNumeroBilhete())
-                .build();
-        Pessoa pessaoSalva = repository.save(pessoaQueSeraSalva);
-        return MessageResponseDTO
-                .builder()
-                .mensagem(pessaoSalva.getPrimeiroNome()+" "+pessaoSalva.getUltimoNome() +" cadastrado com sucesso")
-                .build();
+        Pessoa pessaoSalva = salvarPessoa(pessoaDTO);
+        return getMessageResponse(pessaoSalva, " cadastrado com sucesso");
     }
 
     @Override
@@ -65,8 +53,43 @@ public class PessoaServiceImpl implements IPessoaService {
         repository.deleteById(id);
     }
 
+    public MessageResponseDTO updateById(Long id, PessoaDTO pessoaDTO) throws PessoaNotFoundException {
+        verificaSePessoaExiste(id);
+        Pessoa pessaoEditada = editarPessoa(pessoaDTO);
+        return getMessageResponse(pessaoEditada, " alterada com sucesso");
+    }
+
     private void verificaSePessoaExiste(Long id) throws PessoaNotFoundException {
         repository.findById(id)
                 .orElseThrow(() -> new PessoaNotFoundException(id));
+    }
+
+    private Pessoa salvarPessoa(PessoaDTO pessoaDTO) {
+        Pessoa pessoaQueSeraSalva = Pessoa.builder()
+                .primeiroNome(pessoaDTO.getPrimeiroNome())
+                .ultimoNome(pessoaDTO.getUltimoNome())
+                .dataNascimento(pessoaDTO.getDataNascimento())
+                .telefones(pessoaDTO.getTelefones())
+                .numeroBilhete(pessoaDTO.getNumeroBilhete())
+                .build();
+        return repository.save(pessoaQueSeraSalva);
+    }
+
+    private Pessoa editarPessoa(PessoaDTO pessoaDTO) {
+        Pessoa pessoaQueSeraEditada = Pessoa.builder()
+                .primeiroNome(pessoaDTO.getPrimeiroNome())
+                .ultimoNome(pessoaDTO.getUltimoNome())
+                .dataNascimento(pessoaDTO.getDataNascimento())
+                .telefones(pessoaDTO.getTelefones())
+                .numeroBilhete(pessoaDTO.getNumeroBilhete())
+                .build();
+        return repository.save(pessoaQueSeraEditada);
+    }
+
+    private MessageResponseDTO getMessageResponse(Pessoa pessaoEditada, String mensagem) {
+        return MessageResponseDTO
+                .builder()
+                .mensagem(pessaoEditada.getPrimeiroNome() + " " + pessaoEditada.getUltimoNome() + mensagem)
+                .build();
     }
 }

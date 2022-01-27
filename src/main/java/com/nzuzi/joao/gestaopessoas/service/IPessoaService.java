@@ -14,4 +14,5 @@ public interface IPessoaService {
     List<Pessoa> getAll();
     Pessoa getPessoaPorId(Long id) throws PessoaNotFoundException;
     void deleteById(Long id) throws PessoaNotFoundException;
+    MessageResponseDTO updateById(Long id, PessoaDTO pessoaDTO) throws PessoaNotFoundException;
 }
