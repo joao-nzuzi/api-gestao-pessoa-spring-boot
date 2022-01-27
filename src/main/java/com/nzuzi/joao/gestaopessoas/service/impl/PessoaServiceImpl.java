@@ -44,6 +44,13 @@ public class PessoaServiceImpl implements IPessoaService {
     }
 
     public Pessoa getPessoaPorId(Long id) throws PessoaNotFoundException {
+
+        /*Alternativa 1
+        Pessoa pessoa = repository.findById(id)
+            .orElseThrow(() -> new PessoaNotFoundException(id));
+        return pessoa;*/
+
+        //Alternativa 2
         Optional<Pessoa> pessoa = repository.findById(id);
         if(!pessoa.isPresent())
             throw new PessoaNotFoundException(id);
