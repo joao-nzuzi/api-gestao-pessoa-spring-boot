@@ -13,4 +13,5 @@ public interface IPessoaService {
     MessageResponseDTO cadastrar(PessoaDTO pessoa);
     List<Pessoa> getAll();
     Pessoa getPessoaPorId(Long id) throws PessoaNotFoundException;
+    void deleteById(Long id) throws PessoaNotFoundException;
 }
