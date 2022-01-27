@@ -15,3 +15,11 @@ Para construção deste projecto foi usado as seguintes ferramentas:
 ## Execução do projecto
 Para executar o projecto no terminal, execute o comando abaixo:
 - [x] mvn spring-boot:run
+
+Após a execução do projecto no terminal, digita o seguinte comando no browser:
+- [x] http://localhost:8080/api/v1/pessoa/
+
+## Pré-requisitos
+São necessários os seguintes pré-requisitos para o desenvolvimento e execução do projecto:
+- Java 8 ou superiores;
+- Apache Maven 3.6.3 ou superiores - para gestão de dependências
