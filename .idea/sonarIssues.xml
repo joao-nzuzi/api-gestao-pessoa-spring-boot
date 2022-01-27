@@ -58,6 +58,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/nzuzi/joao/gestaopessoas/exception/PessoaNotFoundException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/nzuzi/joao/gestaopessoas/mapper/PessoaMapper.java">
           <value>
             <set />

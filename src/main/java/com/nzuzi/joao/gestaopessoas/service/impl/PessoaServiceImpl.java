@@ -3,12 +3,14 @@ package com.nzuzi.joao.gestaopessoas.service.impl;
 import com.nzuzi.joao.gestaopessoas.dto.MessageResponseDTO;
 import com.nzuzi.joao.gestaopessoas.dto.request.PessoaDTO;
 import com.nzuzi.joao.gestaopessoas.entity.Pessoa;
+import com.nzuzi.joao.gestaopessoas.exception.PessoaNotFoundException;
 import com.nzuzi.joao.gestaopessoas.repository.PessoaRepo;
 import com.nzuzi.joao.gestaopessoas.service.IPessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,5 +41,12 @@ public class PessoaServiceImpl implements IPessoaService {
 
         return pessoas.stream()
                 .collect(Collectors.toList());
+    }
+
+    public Pessoa getPessoaPorId(Long id) throws PessoaNotFoundException {
+        Optional<Pessoa> pessoa = repository.findById(id);
+        if(!pessoa.isPresent())
+            throw new PessoaNotFoundException(id);
+        return pessoa.get();
     }
 }
