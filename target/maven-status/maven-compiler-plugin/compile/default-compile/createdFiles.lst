@@ -1,0 +1,17 @@
+com\nzuzi\joao\gestaopessoas\entity\Telefone.class
+com\nzuzi\joao\gestaopessoas\repository\PessoaRepo.class
+com\nzuzi\joao\gestaopessoas\enums\TipoTelefone.class
+com\nzuzi\joao\gestaopessoas\entity\Pessoa.class
+com\nzuzi\joao\gestaopessoas\entity\Telefone$TelefoneBuilder.class
+com\nzuzi\joao\gestaopessoas\service\impl\PessoaServiceImpl.class
+com\nzuzi\joao\gestaopessoas\dto\MessageResponseDTO$MessageResponseDTOBuilder.class
+com\nzuzi\joao\gestaopessoas\dto\request\PessoaDTO$PessoaDTOBuilder.class
+com\nzuzi\joao\gestaopessoas\controller\PessoaController.class
+com\nzuzi\joao\gestaopessoas\dto\request\TelefoneDTO$TelefoneDTOBuilder.class
+com\nzuzi\joao\gestaopessoas\dto\request\TelefoneDTO.class
+com\nzuzi\joao\gestaopessoas\dto\MessageResponseDTO.class
+com\nzuzi\joao\gestaopessoas\GestaoPessoasApplication.class
+com\nzuzi\joao\gestaopessoas\mapper\PessoaMapper.class
+com\nzuzi\joao\gestaopessoas\dto\request\PessoaDTO.class
+com\nzuzi\joao\gestaopessoas\entity\Pessoa$PessoaBuilder.class
+com\nzuzi\joao\gestaopessoas\service\IPessoaService.class
