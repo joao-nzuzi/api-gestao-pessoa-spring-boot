@@ -5,6 +5,7 @@ import com.nzuzi.joao.gestaopessoas.entity.Pessoa;
 import com.nzuzi.joao.gestaopessoas.repository.PessoaRepo;
 import com.nzuzi.joao.gestaopessoas.service.impl.PessoaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,11 +16,8 @@ public class PessoaController {
     private PessoaServiceImpl service;
 
     @PostMapping("/")
-    public MessageResponseDTO getPessoa(@RequestBody Pessoa pessoa){
-        Pessoa pessaoSalva = service.cadastrar(pessoa);
-        return MessageResponseDTO
-                .builder()
-                .mensagem("Cadastro feito com sucesso com")
-                .build();
+    @ResponseStatus(HttpStatus.CREATED)
+    public MessageResponseDTO salvarPessoa(@RequestBody Pessoa pessoa){
+        return service.cadastrar(pessoa);
     }
 }
