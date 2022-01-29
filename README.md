@@ -1,6 +1,6 @@
 # API REST Para Gestão de Pessoas feito com Spring Boot
 
-Este projecto foi desenvolvido com o propósito de mostrar como podemos conostruir uma API REST com Spring Boot fazendo o uso correcto dos 4 verbos principais do HTTP, a saber:
+Este projecto foi desenvolvido com o propósito de mostrar como podemos construir uma API REST com Spring Boot fazendo o uso correcto dos 4 verbos principais do HTTP, a saber:
 - **GET** - Que serve para fazer uma busca;
 - **POST** - Que Serve para fazer uma inserção;
 - **PUT** - Que serve para fazer um update e;
